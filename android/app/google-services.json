@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "560192827560",
+    "firebase_url": "https://testapp-56483.firebaseio.com",
+    "project_id": "testapp-56483",
+    "storage_bucket": "testapp-56483.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560192827560:android:9d6c18431b63cbd14e129d",
+        "android_client_info": {
+          "package_name": "com.example.fcm_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560192827560-5276jst30cmha8csc022sr9ht5pbrdk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJug3uznq9D-me8k1KPiTd9eX3VezjPl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560192827560-5276jst30cmha8csc022sr9ht5pbrdk7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "560192827560-vc0c0k8ko6l3euuquouttora2lhv382r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "madad.advice4business"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560192827560:android:8e629291b88b3b694e129d",
+        "android_client_info": {
+          "package_name": "com.example.gdg_flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560192827560-5276jst30cmha8csc022sr9ht5pbrdk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJug3uznq9D-me8k1KPiTd9eX3VezjPl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560192827560-5276jst30cmha8csc022sr9ht5pbrdk7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "560192827560-vc0c0k8ko6l3euuquouttora2lhv382r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "madad.advice4business"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

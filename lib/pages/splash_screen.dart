@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gdg_flutter_app/bloc/sessions_bloc.dart';
 import 'package:gdg_flutter_app/pages/bubles.dart';
+import 'package:gdg_flutter_app/utils/next_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'home_page.dart';
 
@@ -11,10 +14,17 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2)).then((value) =>
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MyHomePage())));
+    loadData();
     super.initState();
+  }
+
+  loadData() async {
+    Future.delayed(Duration(seconds: 0)).then((value) async {
+      final sectionBloc = Provider.of<SessionBloc>(context, listen: false);
+      sectionBloc
+          .getSessions()
+          .then((value) => nextScreen(context, MyHomePage()));
+    });
   }
 
   @override

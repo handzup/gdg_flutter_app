@@ -154,3 +154,48 @@ class Bubble {
     }
   }
 }
+// Positioned(
+//   child: bottomBlock(
+//       mq: mq,
+//       right: false,
+//       postion: _leftFirst,
+//       title: 'Agenda',
+//       icon: Feather.clock),
+// ),
+// Positioned(
+//   child: bottomBlock(
+//       mq: mq,
+//       right: false,
+//       postion: _leftSecond,
+//       title: 'Team',
+//       icon: Feather.users,
+//       color: Colors.yellow[700]),
+// ),
+// bottomSmallBlock(
+//     mq: mq,
+//     right: false,
+//     postion: _leftThird,
+//     title: 'FAQ',
+//     icon: Feather.message_circle,
+//     color: Colors.green),
+// bottomBlock(
+//     mq: mq,
+//     right: false,
+//     postion: _rightFirst,
+//     title: 'Locate Us',
+//     icon: Feather.map,
+//     color: Colors.blue),
+// bottomBlock(
+//     mq: mq,
+//     right: false,
+//     postion: _rightSecond,
+//     title: 'Sponsors',
+//     icon: Feather.dollar_sign,
+//     color: Colors.green),
+// bottomSmallBlock(
+//     mq: mq,
+//     right: false,
+//     postion: _rightThird,
+//     title: 'Speakers',
+//     icon: Feather.user,
+//     color: Colors.blue),
