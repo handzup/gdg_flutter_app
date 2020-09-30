@@ -6,7 +6,7 @@ part of 'speaker.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Speaker _$SpeakerFromJson(Map<String, dynamic> json) {
+Speaker _$SpeakerFromJson(Map<String, dynamic> json, String qr_path) {
   return Speaker(
     socials: (json['socials'] as List)
         ?.map((e) =>
@@ -22,7 +22,7 @@ Speaker _$SpeakerFromJson(Map<String, dynamic> json) {
     photoUrl: json['photoUrl'] as String,
     pronouns: json['pronouns'] as String,
     shortBio: json['shortBio'] as String,
-    queryPath: json['queryPath'] as String,
+    queryPath: qr_path ?? json['queryPath'] as String,
   );
 }
 

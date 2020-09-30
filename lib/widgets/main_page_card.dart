@@ -21,7 +21,7 @@ class AnimatedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => callBack != null ? callBack() : null,
+      onTap: () => callBack != null ? callBack(title) : null,
       child: Container(
         height: height,
         width: width,
@@ -65,12 +65,19 @@ class AnimatedCard extends StatelessWidget {
                     size: 40,
                   ),
                   Spacer(),
-                  Text(
-                    title,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600),
+                  Hero(
+                    tag: title,
+                    transitionOnUserGestures: true,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
                   ),
                   Spacer(),
                 ],

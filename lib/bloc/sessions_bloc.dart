@@ -27,20 +27,22 @@ class SessionBloc extends ChangeNotifier {
     return _sessions;
   }
 
+  Future<List<Session>> getMobile() async {
+    final data = _sessions
+        .where((element) => element?.tags?.first == 'Android')
+        .toList();
+    return data;
+  }
+
   Future<List<Speaker>> getSp(session) async {
     List<Speaker> speakers = <Speaker>[];
-    // session?.speakers?.forEach((speaker) async {
-    //   speakers.add(await _speakerRepo.getSpeaker(speaker.queryPath));
-    //   print(speakers.length);
-    // });
+
     if (session.speakers != null) {
       for (var i = 0; i < session?.speakers?.length; i++) {
         speakers
             .add(await _speakerRepo.getSpeaker(session?.speakers[i].queryPath));
-        //  print(speakers[0].name);
       }
     }
-
     return speakers;
   }
 }

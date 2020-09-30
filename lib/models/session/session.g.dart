@@ -6,8 +6,9 @@ part of 'session.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Session _$SessionFromJson(Map<String, dynamic> json) {
+Session _$SessionFromJson(Map<String, dynamic> json, int id) {
   return Session(
+    id: id,
     complexity: json['complexity'] as String,
     description: json['description'] as String,
     presentation: json['presentation'] as String,

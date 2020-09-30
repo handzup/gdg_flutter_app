@@ -2,7 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:gdg_flutter_app/bloc/sessions_bloc.dart';
+import 'package:gdg_flutter_app/pages/agenda_page.dart';
+import 'package:gdg_flutter_app/pages/faq.page.dart';
+import 'package:gdg_flutter_app/pages/location_page.dart';
+import 'package:gdg_flutter_app/pages/speakers_page.dart';
+import 'package:gdg_flutter_app/pages/sponsors_page.dart';
+import 'package:gdg_flutter_app/pages/team_page.dart';
+import 'package:gdg_flutter_app/repository/schedule.dart';
 import 'package:gdg_flutter_app/repository/speaker.dart';
+import 'package:gdg_flutter_app/utils/constants.dart';
+import 'package:gdg_flutter_app/utils/next_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/carousel_slider.dart';
@@ -17,24 +26,119 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   bool show = false;
   final double cardHegiht = 5;
   final double cardWidth = 2.5;
-
-  bb() {
+  Alignment agenda = CardAligns.agendaStartPosition;
+  Alignment team = CardAligns.teamStartPosition;
+  bb(title) {
     setState(() {
       show = !show;
+      glob = title;
     });
-    Future.delayed(Duration(seconds: 1)).then((value) {
+    Future.delayed(Duration(milliseconds: 300)).then((value) {
+      nextScale(context, nextPage(title), endPositon);
+    });
+  }
+
+  nextPage(page) {
+    switch (page) {
+      case 'Agenda':
+        return AgendaPage();
+        break;
+      case 'Team':
+        return TeamPage();
+        break;
+      case 'FAQ':
+        return FaqPage();
+        break;
+      case "Speakers":
+        return SpeakersPage();
+        break;
+      case 'Sponsors':
+        return SponsorsPage();
+        break;
+      case 'Locate Us':
+        return LocationPage();
+        break;
+      default:
+    }
+  }
+
+  endPositon() {
+    print('end position');
+    Future.delayed(Duration(milliseconds: 300)).then((value) {
       setState(() {
         show = !show;
+        glob = '';
       });
     });
   }
 
+  String glob = '';
   final sb = SessionBloc();
-  final sp = SpeakerRepository();
+  final sp = ScheduleRepository();
   @override
   void initState() {
-    //sp.getSpeaker('name');
+    getHs();
     super.initState();
+  }
+
+  getHs() async {
+    final sch = await sp.getSchedules();
+  }
+
+  Alignment generate(String title) {
+    switch (title) {
+      case 'Agenda':
+        if (glob == title) {
+          return Alignment.center;
+        } else {
+          return CardAligns.agendaStartPosition;
+        }
+
+        break;
+      case 'Team':
+        if (glob == title) {
+          return Alignment.center;
+        } else {
+          return CardAligns.teamStartPosition;
+        }
+
+        break;
+      case 'FAQ':
+        if (glob == title) {
+          return Alignment.center;
+        } else {
+          return CardAligns.faqStartPosition;
+        }
+
+        break;
+      case 'Speakers':
+        if (glob == title) {
+          return Alignment.center;
+        } else {
+          return CardAligns.speakersStartPosition;
+        }
+
+        break;
+      case 'Sponsors':
+        if (glob == title) {
+          return Alignment.center;
+        } else {
+          return CardAligns.sponsorsStartPosition;
+        }
+
+        break;
+      case 'Locate Us':
+        if (glob == title) {
+          return Alignment.center;
+        } else {
+          return CardAligns.locateStartPosition;
+        }
+
+        break;
+
+      default:
+        return Alignment.bottomCenter;
+    }
   }
 
   @override
@@ -51,7 +155,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             ),
             AnimatedContainer(
               duration: Duration(milliseconds: 500),
-              alignment: show ? Alignment(0.0, -3.0) : Alignment(0.0, -1.0),
+              alignment: show
+                  ? CardAligns.carouselStartPosition
+                  : CardAligns.carouselEndPosition,
               curve: Curves.linearToEaseOut,
               child: Consumer<SessionBloc>(builder: (context, data, child) {
                 return Carousel(
@@ -62,31 +168,35 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             AnimatedContainer(
               curve: Curves.linearToEaseOut,
               duration: Duration(milliseconds: 300),
-              alignment: show ? Alignment(-3.0, -.1) : Alignment(-0.8, -0.1),
+              alignment:
+                  show ? generate('Agenda') : CardAligns.agendaEndPosition,
               child: AnimatedCard(
                 callBack: bb,
                 height: mq.height / cardHegiht,
                 width: mq.width / cardWidth,
                 icon: Feather.clock,
                 title: 'Agenda',
+                color: Colors.green,
               ),
             ),
             AnimatedContainer(
                 curve: Curves.linearToEaseOut,
                 duration: Duration(milliseconds: 400),
-                alignment: show ? Alignment(-3.0, 0.5) : Alignment(-0.8, 0.5),
+                alignment: show ? generate('Team') : CardAligns.teamEndPosition,
                 child: AnimatedCard(
+                  callBack: bb,
                   height: mq.height / cardHegiht,
                   width: mq.width / cardWidth,
-                  icon: Feather.clock,
+                  icon: Feather.users,
                   title: 'Team',
                   color: Colors.yellow[700],
                 )),
             AnimatedContainer(
                 curve: Curves.linearToEaseOut,
                 duration: Duration(milliseconds: 500),
-                alignment: show ? Alignment(-3.0, .84) : Alignment(-0.8, 0.84),
+                alignment: show ? generate('FAQ') : CardAligns.faqEndPosition,
                 child: AnimatedCard(
+                  callBack: bb,
                   height: mq.height / cardHegiht / 2,
                   width: mq.width / cardWidth,
                   icon: Feather.message_circle,
@@ -97,8 +207,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             AnimatedContainer(
                 curve: Curves.linearToEaseOut,
                 duration: Duration(milliseconds: 300),
-                alignment: show ? Alignment(3.0, 0.8) : Alignment(0.8, 0.8),
+                alignment:
+                    show ? generate('Locate Us') : CardAligns.locateEndPosition,
                 child: AnimatedCard(
+                  callBack: bb,
                   height: mq.height / cardHegiht,
                   width: mq.width / cardWidth,
                   icon: Feather.map,
@@ -108,8 +220,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             AnimatedContainer(
                 curve: Curves.linearToEaseOut,
                 duration: Duration(milliseconds: 400),
-                alignment: show ? Alignment(3.0, 0.21) : Alignment(0.8, 0.21),
+                alignment: show
+                    ? generate('Sponsors')
+                    : CardAligns.sponsorsEndPosition,
                 child: AnimatedCard(
+                  callBack: bb,
                   height: mq.height / cardHegiht,
                   width: mq.width / cardWidth,
                   icon: Feather.dollar_sign,
@@ -119,8 +234,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             AnimatedContainer(
                 curve: Curves.linearToEaseOut,
                 duration: Duration(milliseconds: 500),
-                alignment: show ? Alignment(3.0, -.21) : Alignment(0.8, -0.21),
+                alignment: show
+                    ? generate('Speakers')
+                    : CardAligns.speakersEndPosition,
                 child: AnimatedCard(
+                  callBack: bb,
                   height: mq.height / cardHegiht / 2,
                   width: mq.width / cardWidth,
                   icon: Feather.user,

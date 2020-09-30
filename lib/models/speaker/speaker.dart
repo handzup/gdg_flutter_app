@@ -31,8 +31,8 @@ class Speaker {
       this.pronouns,
       this.shortBio,
       this.queryPath});
-  factory Speaker.fromJson(Map<String, dynamic> json) =>
-      _$SpeakerFromJson(json);
+  factory Speaker.fromJson(Map<String, dynamic> json, String qrPath) =>
+      _$SpeakerFromJson(json, qrPath);
 
   Map<String, dynamic> toJson() => _$SpeakerToJson(this);
 }

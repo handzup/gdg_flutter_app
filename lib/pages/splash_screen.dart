@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       final sectionBloc = Provider.of<SessionBloc>(context, listen: false);
       sectionBloc
           .getSessions()
-          .then((value) => nextScreen(context, MyHomePage()));
+          .then((value) => nextScreenReplace(context, MyHomePage()));
     });
   }
 

@@ -5,6 +5,7 @@ part 'session.g.dart';
 
 @JsonSerializable()
 class Session {
+  final int id;
   final String complexity;
   final String description;
   final String presentation;
@@ -15,7 +16,8 @@ class Session {
   final String videoId;
 
   Session(
-      {this.complexity,
+      {this.id,
+      this.complexity,
       this.description,
       this.presentation,
       this.speakers,
@@ -23,8 +25,8 @@ class Session {
       this.title,
       this.videoId});
 
-  factory Session.fromJson(Map<String, dynamic> json) =>
-      _$SessionFromJson(json);
+  factory Session.fromJson(Map<String, dynamic> json, int id) =>
+      _$SessionFromJson(json, id);
 
   Map<String, dynamic> toJson() => _$SessionToJson(this);
 

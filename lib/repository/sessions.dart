@@ -7,8 +7,10 @@ class SessionRepository {
     await Firebase.initializeApp();
     final document = FirebaseFirestore.instance.collection("sessions").get();
     var sessions = <Session>[];
+
     await document.then((value) => value.docs.forEach((element) {
-          sessions.add(Session.fromJson(element.data()));
+          sessions
+              .add(Session.fromJson(element.data(), int.tryParse(element.id)));
         }));
     return sessions;
   }
