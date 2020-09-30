@@ -1,15 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gdg_flutter_app/models/speaker/speaker.dart';
 
 import '../models/session/session.dart';
+import '../models/speaker/speaker.dart';
 import '../repository/sessions.dart';
 import '../repository/speaker.dart';
+import '../utils/hive.dart';
+import '../utils/locator.dart';
 
 class SessionBloc extends ChangeNotifier {
   final _sessionRepo = SessionRepository();
   final _speakerRepo = SpeakerRepository();
   List<Session> _sessions = List<Session>();
+  var hive = locator<HiveWrapper>();
   List<Session> get sessions => _sessions;
   List<Speaker> _spekaers = List<Speaker>();
   List<Speaker> get speakers => _spekaers;
@@ -24,7 +27,12 @@ class SessionBloc extends ChangeNotifier {
     for (var i = 0; i < _sessions.length; i++) {
       _sessions[i].speakers = await getSp(_sessions[i]);
     }
+    hive.writeSessionBox(_sessions);
     return _sessions;
+  }
+
+  Future<Session> getFromHive() async {
+    return hive.readSessionBox(103);
   }
 
   Future<List<Session>> getMobile() async {

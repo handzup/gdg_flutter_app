@@ -83,6 +83,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   getHs() async {
     final sch = await sp.getSchedules();
+    final aaa = await sb.getFromHive();
+    print(aaa);
   }
 
   Alignment generate(String title) {
