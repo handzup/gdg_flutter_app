@@ -1,21 +1,36 @@
-import 'package:gdg_flutter_app/models/speaker/social.dart';
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'social.dart';
 
 part 'speaker.g.dart';
 
 @JsonSerializable()
+@HiveType(typeId: 0)
 class Speaker {
+  @HiveField(0)
   final String queryPath;
+  @HiveField(1)
   final String bio;
+  @HiveField(2)
   final String company;
+  @HiveField(3)
   final String companyLogoUrl;
+  @HiveField(4)
   final String country;
+  @HiveField(5)
   final bool featured;
+  @HiveField(6)
   final String name;
+  @HiveField(7)
   final String photoUrl;
+  @HiveField(8)
   final String pronouns;
+  @HiveField(9)
   final String shortBio;
+  @HiveField(10)
   final List<Social> socials;
+  @HiveField(11)
   final String title;
 
   Speaker(
