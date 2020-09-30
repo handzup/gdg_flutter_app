@@ -24,7 +24,7 @@ class Session {
   final List<String> tags;
   @HiveField(7)
   final String title;
-  @HiveField(0)
+  @HiveField(8)
   final String videoId;
 
   Session(
