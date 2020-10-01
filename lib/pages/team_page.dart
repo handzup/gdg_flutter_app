@@ -20,6 +20,7 @@ class _TeamPageState extends State<TeamPage> {
       onWillPop: back,
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           centerTitle: true,
           title: Hero(
               tag: 'Team',

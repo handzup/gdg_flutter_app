@@ -25,62 +25,42 @@ class _SpeakersPageState extends State<SpeakersPage> {
     return WillPopScope(
       onWillPop: back,
       child: Scaffold(
-        body: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            final color = GoogleColors.getGoogleRandomColor();
-            return <Widget>[
-              SliverAppBar(
-                leading: IconButton(
-                    onPressed: () => back(),
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.black87,
-                    )),
-                centerTitle: true,
-                pinned: true,
-                backgroundColor: Colors.grey[50],
-                floating: true,
-                elevation: 0,
-                forceElevated: true,
-                automaticallyImplyLeading: false,
-                title: Container(
-                  child: Hero(
-                      tag: 'Speakers',
-                      child: Material(
-                          color: Colors.transparent,
-                          child: Text('Speakers',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600)))),
-                ),
-              )
-            ];
-          },
-          body: Column(children: [
-            Expanded(
-              child: Consumer<SpeakerBloc>(
-                builder: (context, data, child) {
-                  if (data.speakers.isEmpty) return child;
-                  return ListView.builder(
-                      itemCount: data.speakers.length,
-                      itemBuilder: (context, index) {
-                        return SpeakerCard(
-                          imageUrl: data.speakers[index].photoUrl,
-                          shortBio: data.speakers[index].shortBio,
-                          speakerName: data.speakers[index].name,
-                          badges: data.speakers[index].badges,
-                          social: data.speakers[index].socials,
-                        );
-                      });
-                },
-                child: CupertinoActivityIndicator(),
-              ),
-            )
-          ]),
-          controller: _scrollController,
+        appBar: AppBar(
+          elevation: 0,
+          centerTitle: true,
+          title: Hero(
+              tag: 'Speakers',
+              child: Material(
+                  color: Colors.transparent,
+                  child: Text('Speakers',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w600)))),
         ),
+        body: Column(children: [
+          Expanded(
+            child: Consumer<SpeakerBloc>(
+              builder: (context, data, child) {
+                if (data.speakers.isEmpty) return child;
+                return ListView.builder(
+                    itemCount: data.speakers.length,
+                    itemBuilder: (context, index) {
+                      return SpeakerCard(
+                        title: data.speakers[index].title,
+                        imageUrl: data.speakers[index].photoUrl,
+                        shortBio: data.speakers[index].shortBio,
+                        speakerName: data.speakers[index].name,
+                        badges: data.speakers[index].badges,
+                        social: data.speakers[index].socials,
+                      );
+                    });
+              },
+              child: CupertinoActivityIndicator(),
+            ),
+          )
+        ]),
       ),
     );
   }
