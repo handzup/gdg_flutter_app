@@ -19,9 +19,5 @@ class SpeakerRepository {
 
   Future<Speaker> getSpeaker(String name) async {
     return _speakers.where((element) => element.queryPath == name).first;
-    // await Firebase.initializeApp();
-    // final document =
-    //     FirebaseFirestore.instance.collection("speakers").doc(name).get();
-    // return Speaker.fromJson(await document.then((value) => value.data(),));
   }
 }

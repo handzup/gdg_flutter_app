@@ -3,7 +3,7 @@ import 'package:gdg_flutter_app/models/speaker/speaker.dart';
 
 class Agenda {
   final Session agenda;
-  final DateTime startTime;
+  final String startTime;
   final Duration duration;
   final Speaker speaker;
 

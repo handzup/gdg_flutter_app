@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:gdg_flutter_app/bloc/schedule_bloc.dart';
 import 'package:gdg_flutter_app/bloc/sessions_bloc.dart';
 import 'package:gdg_flutter_app/models/session/session.dart';
 import 'package:gdg_flutter_app/utils/constants.dart';
@@ -24,11 +26,8 @@ class _AgendaPageState extends State<AgendaPage> {
   }
 
   getDatas() async {
-    final mobile2 =
-        await Provider.of<SessionBloc>(context, listen: false).getMobile();
-    setState(() {
-      mobile = mobile2;
-    });
+    await Provider.of<ScheduleBloc>(context, listen: false).createAgenda();
+    await Provider.of<ScheduleBloc>(context, listen: false).agendaSort();
   }
 
   // ignore: missing_return
@@ -43,6 +42,7 @@ class _AgendaPageState extends State<AgendaPage> {
     return WillPopScope(
         onWillPop: back,
         child: DefaultTabController(
+          initialIndex: 1,
           length: 3,
           child: Scaffold(
             body: NestedScrollView(
@@ -115,14 +115,38 @@ class _AgendaPageState extends State<AgendaPage> {
               },
               body: TabBarView(
                 children: <Widget>[
-                  AgendaSection(
-                    data: mobile,
+                  Consumer<ScheduleBloc>(
+                    builder: (context, data, child) {
+                      if (data.cloud.isEmpty) return child;
+                      return AgendaSection(
+                        data: data.cloud,
+                      );
+                    },
+                    child: Center(
+                      child: CupertinoActivityIndicator(),
+                    ),
                   ),
-                  AgendaSection(
-                    data: [],
+                  Consumer<ScheduleBloc>(
+                    builder: (context, data, child) {
+                      if (data.web.isEmpty) return child;
+                      return AgendaSection(
+                        data: data.web,
+                      );
+                    },
+                    child: Center(
+                      child: CupertinoActivityIndicator(),
+                    ),
                   ),
-                  AgendaSection(
-                    data: [],
+                  Consumer<ScheduleBloc>(
+                    builder: (context, data, child) {
+                      if (data.mobile.isEmpty) return child;
+                      return AgendaSection(
+                        data: data.mobile,
+                      );
+                    },
+                    child: Center(
+                      child: CupertinoActivityIndicator(),
+                    ),
                   ),
                 ],
               ),

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gdg_flutter_app/utils/locator.dart';
+import 'package:gdg_flutter_app/bloc/schedule_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'bloc/sessions_bloc.dart';
+import 'bloc/speakers_bloc.dart';
 import 'models/session/session.dart';
+import 'models/speaker/social.dart';
 import 'models/speaker/speaker.dart';
 import 'pages/splash_screen.dart';
+import 'utils/locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +20,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(SessionAdapter());
   Hive.registerAdapter(SpeakerAdapter());
+  Hive.registerAdapter(SocialAdapter());
 
   runApp(MyApp());
 }
@@ -28,6 +32,12 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<SessionBloc>(
           create: (context) => SessionBloc(),
+        ),
+        ChangeNotifierProvider<ScheduleBloc>(
+          create: (context) => ScheduleBloc(),
+        ),
+        ChangeNotifierProvider<SpeakerBloc>(
+          create: (context) => SpeakerBloc(),
         ),
       ],
       child: MaterialApp(

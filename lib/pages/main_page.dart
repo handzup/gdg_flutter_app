@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:gdg_flutter_app/bloc/schedule_bloc.dart';
 import 'package:gdg_flutter_app/bloc/sessions_bloc.dart';
 import 'package:gdg_flutter_app/pages/agenda_page.dart';
 import 'package:gdg_flutter_app/pages/faq.page.dart';
@@ -8,8 +9,6 @@ import 'package:gdg_flutter_app/pages/location_page.dart';
 import 'package:gdg_flutter_app/pages/speakers_page.dart';
 import 'package:gdg_flutter_app/pages/sponsors_page.dart';
 import 'package:gdg_flutter_app/pages/team_page.dart';
-import 'package:gdg_flutter_app/repository/schedule.dart';
-import 'package:gdg_flutter_app/repository/speaker.dart';
 import 'package:gdg_flutter_app/utils/constants.dart';
 import 'package:gdg_flutter_app/utils/next_screen.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +22,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
-  bool show = false;
+  bool show = true;
   final double cardHegiht = 5;
   final double cardWidth = 2.5;
   Alignment agenda = CardAligns.agendaStartPosition;
@@ -73,8 +72,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   String glob = '';
-  final sb = SessionBloc();
-  final sp = ScheduleRepository();
   @override
   void initState() {
     getHs();
@@ -82,9 +79,12 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   getHs() async {
-    final sch = await sp.getSchedules();
-    final aaa = await sb.getFromHive();
-    print(aaa);
+    Future.delayed(Duration(milliseconds: 500)).then((value) {
+      setState(() {
+        show = !show;
+      });
+    });
+    await Provider.of<ScheduleBloc>(context, listen: false).getSchedules();
   }
 
   Alignment generate(String title) {
