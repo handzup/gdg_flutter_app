@@ -66,7 +66,13 @@ class _SpeakersPageState extends State<SpeakersPage> {
                   return ListView.builder(
                       itemCount: data.speakers.length,
                       itemBuilder: (context, index) {
-                        return SpeakerCard();
+                        return SpeakerCard(
+                          imageUrl: data.speakers[index].photoUrl,
+                          shortBio: data.speakers[index].shortBio,
+                          speakerName: data.speakers[index].name,
+                          badges: data.speakers[index].badges,
+                          social: data.speakers[index].socials,
+                        );
                       });
                 },
                 child: CupertinoActivityIndicator(),

@@ -17,6 +17,7 @@ class SpeakerAdapter extends TypeAdapter<Speaker> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Speaker(
+      badges: (fields[12] as List)?.cast<dynamic>(),
       socials: (fields[10] as List)?.cast<Social>(),
       title: fields[11] as String,
       bio: fields[1] as String,
@@ -35,7 +36,7 @@ class SpeakerAdapter extends TypeAdapter<Speaker> {
   @override
   void write(BinaryWriter writer, Speaker obj) {
     writer
-      ..writeByte(12)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.queryPath)
       ..writeByte(1)
@@ -59,7 +60,9 @@ class SpeakerAdapter extends TypeAdapter<Speaker> {
       ..writeByte(10)
       ..write(obj.socials)
       ..writeByte(11)
-      ..write(obj.title);
+      ..write(obj.title)
+      ..writeByte(12)
+      ..write(obj.badges);
   }
 
   @override
@@ -79,6 +82,7 @@ class SpeakerAdapter extends TypeAdapter<Speaker> {
 
 Speaker _$SpeakerFromJson(Map<String, dynamic> json, String qrPath) {
   return Speaker(
+    badges: json['badges'] as List,
     socials: (json['socials'] as List)
         ?.map((e) =>
             e == null ? null : Social.fromJson(e as Map<String, dynamic>))
@@ -110,4 +114,5 @@ Map<String, dynamic> _$SpeakerToJson(Speaker instance) => <String, dynamic>{
       'shortBio': instance.shortBio,
       'socials': instance.socials,
       'title': instance.title,
+      'badges': instance.badges,
     };

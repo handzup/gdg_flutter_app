@@ -1,3 +1,4 @@
+import 'package:gdg_flutter_app/models/speaker/badge.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -32,9 +33,12 @@ class Speaker {
   final List<Social> socials;
   @HiveField(11)
   final String title;
+  @HiveField(12)
+  final List<Badge> badges;
 
   Speaker(
-      {this.socials,
+      {this.badges,
+      this.socials,
       this.title,
       this.bio,
       this.company,
