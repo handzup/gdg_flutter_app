@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'bloc/schedule_bloc.dart';
 import 'bloc/sessions_bloc.dart';
 import 'bloc/speakers_bloc.dart';
+import 'bloc/team_bloc.dart';
 import 'models/session/session.dart';
 import 'models/speaker/badge.dart';
 import 'models/speaker/social.dart';
@@ -40,6 +41,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<SpeakerBloc>(
           create: (context) => SpeakerBloc(),
+        ),
+        ChangeNotifierProvider<TeamBloc>(
+          create: (context) => TeamBloc(),
         ),
       ],
       child: MaterialApp(

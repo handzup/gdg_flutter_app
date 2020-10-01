@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:gdg_flutter_app/bloc/schedule_bloc.dart';
-import 'package:gdg_flutter_app/bloc/sessions_bloc.dart';
 import 'package:gdg_flutter_app/models/session/session.dart';
 import 'package:gdg_flutter_app/utils/constants.dart';
 import 'package:gdg_flutter_app/widgets/agenda_section.dart';

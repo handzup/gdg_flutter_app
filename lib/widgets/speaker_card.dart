@@ -11,7 +11,6 @@ class SpeakerCard extends StatelessWidget {
   final String speakerName;
   final String shortBio;
   final String title;
-  final List<Badge> badges;
   final List<Social> social;
 
   const SpeakerCard({
@@ -20,7 +19,6 @@ class SpeakerCard extends StatelessWidget {
     @required this.imageUrl,
     @required this.speakerName,
     @required this.shortBio,
-    this.badges,
     this.social,
   }) : super(key: key);
   List<Widget> generateIcons(List<Social> social) {
@@ -95,6 +93,7 @@ class SpeakerCard extends StatelessWidget {
                     width: 100,
                     fit: BoxFit.cover,
                     fadeInCurve: Curves.ease,
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                     imageUrl: imageUrl ?? 'https://picsum.photos/200/300',
                   ),
                 ),
@@ -109,7 +108,7 @@ class SpeakerCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(speakerName,
+                  Text(speakerName ?? '',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -123,7 +122,7 @@ class SpeakerCard extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(title,
+                  Text(title ?? '',
                       style: TextStyle(
                           color: Colors.black26,
                           fontSize: 14,
@@ -132,7 +131,7 @@ class SpeakerCard extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(shortBio,
+                  Text(shortBio ?? '',
                       maxLines: 1,
                       overflow: TextOverflow.clip,
                       style: TextStyle(

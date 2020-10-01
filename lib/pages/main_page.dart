@@ -4,6 +4,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:gdg_flutter_app/bloc/schedule_bloc.dart';
 import 'package:gdg_flutter_app/bloc/sessions_bloc.dart';
 import 'package:gdg_flutter_app/bloc/speakers_bloc.dart';
+import 'package:gdg_flutter_app/bloc/team_bloc.dart';
 import 'package:gdg_flutter_app/pages/agenda_page.dart';
 import 'package:gdg_flutter_app/pages/faq.page.dart';
 import 'package:gdg_flutter_app/pages/location_page.dart';
@@ -87,6 +88,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     });
     await Provider.of<ScheduleBloc>(context, listen: false).getSchedules();
     await Provider.of<SpeakerBloc>(context, listen: false).getSpeakers();
+    await Provider.of<TeamBloc>(context, listen: false).getTeams();
   }
 
   Alignment generate(String title) {

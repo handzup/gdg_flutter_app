@@ -52,7 +52,6 @@ class _SpeakersPageState extends State<SpeakersPage> {
                         imageUrl: data.speakers[index].photoUrl,
                         shortBio: data.speakers[index].shortBio,
                         speakerName: data.speakers[index].name,
-                        badges: data.speakers[index].badges,
                         social: data.speakers[index].socials,
                       );
                     });
