@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'badge.g.dart';
 
 @JsonSerializable()
-@HiveType(typeId: 0)
+@HiveType(typeId: 3)
 class Badge {
   @HiveField(0)
   final String description;

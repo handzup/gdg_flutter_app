@@ -17,7 +17,7 @@ class SpeakerAdapter extends TypeAdapter<Speaker> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Speaker(
-      badges: (fields[12] as List)?.cast<dynamic>(),
+      badges: (fields[12] as List)?.cast<Badge>(),
       socials: (fields[10] as List)?.cast<Social>(),
       title: fields[11] as String,
       bio: fields[1] as String,
@@ -82,7 +82,10 @@ class SpeakerAdapter extends TypeAdapter<Speaker> {
 
 Speaker _$SpeakerFromJson(Map<String, dynamic> json, String qrPath) {
   return Speaker(
-    badges: json['badges'] as List,
+    badges: (json['badges'] as List)
+        ?.map(
+            (e) => e == null ? null : Badge.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     socials: (json['socials'] as List)
         ?.map((e) =>
             e == null ? null : Social.fromJson(e as Map<String, dynamic>))
