@@ -1,7 +1,6 @@
 # gdg_flutter_app
 
-<p align="center"><a href="#getting-started">:rocket: Get Started</a></p>
-
+ 
 ## 📸 ScreenShots
 
 |             Light Theme              |              Dark Theme              |
