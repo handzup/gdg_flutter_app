@@ -78,10 +78,15 @@ class _SponsorsPageState extends State<SponsorsPage> {
                                             Padding(
                                               padding:
                                                   const EdgeInsets.all(18.0),
-                                              child: SvgPicture.network(
-                                                data.partner[i].logos[index]
-                                                    .logoUrl,
-                                                height: 80,
+                                              child: CachedNetworkImage(
+                                                height: 100,
+                                                imageUrl: data.partner[i]
+                                                    .logos[index].logoUrl,
+                                                placeholder: (context, url) =>
+                                                    CupertinoActivityIndicator(),
+                                                errorWidget:
+                                                    (context, url, error) =>
+                                                        Icon(Icons.error),
                                               ),
                                             ),
                                             Padding(
