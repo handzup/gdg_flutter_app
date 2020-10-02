@@ -8,8 +8,7 @@ class ThemeProvider with ChangeNotifier {
   bool get darkTheme => _darkTheme;
 
   set darkTheme(bool value) {
-    print(value);
-    _darkTheme = value;
+     _darkTheme = value;
     themePrefs.setTheme(value);
     notifyListeners();
   }
