@@ -1,6 +1,7 @@
 # gdg_flutter_app
 
- 
+    DevFest Tashkent Flutter Mobile application 
+
 ## 📸 ScreenShots
 
 |             Light Theme              |              Dark Theme              |
