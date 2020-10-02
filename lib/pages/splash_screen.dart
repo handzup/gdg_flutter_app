@@ -26,15 +26,6 @@ class _SplashScreenState extends State<SplashScreen> {
           .then((value) => nextScreenReplace(context, MyHomePage()));
     });
   }
-  // loadData() async {
-  //   Future.delayed(Duration(seconds: 0)).then((value) async {
-  //     final sessionBloc = Provider.of<SessionBloc>(context, listen: false);
-  //     final speakerBloc = Provider.of<SpeakerBloc>(context, listen: false);
-
-  //     Future.wait([speakerBloc.getSpeakers(), sessionBloc.getSessions()])
-  //         .then((value) => nextScreenReplace(context, MyHomePage()));
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {

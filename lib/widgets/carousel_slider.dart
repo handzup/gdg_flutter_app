@@ -30,7 +30,6 @@ class Carousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print('tap'),
       child: Container(
         child: CarouselSlider.builder(
           options: CarouselOptions(
@@ -150,7 +149,7 @@ class Carousel extends StatelessWidget {
         height: 200,
         width: double.maxFinite,
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(

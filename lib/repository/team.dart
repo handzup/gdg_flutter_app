@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:gdg_flutter_app/models/session/session.dart';
 import 'package:gdg_flutter_app/models/team/team.dart';
 
 class TeamRepository {

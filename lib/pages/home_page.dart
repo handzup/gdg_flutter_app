@@ -1,4 +1,7 @@
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:gdg_flutter_app/bloc/theme_bloc.dart';
+import 'package:provider/provider.dart';
 
 import '../styles.dart';
 import 'main_page.dart';
@@ -13,8 +16,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
-      backgroundColor: ThemeColors.primaryColor,
+      backgroundColor: Theme.of(context).primaryColor,
       extendBodyBehindAppBar: false,
       appBar: AppBar(
         title: Image.asset(
@@ -23,6 +28,17 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: DayNightSwitcher(
+              isDarkModeEnabled: themeChange.darkTheme,
+              onStateChanged: (isDarkModeEnabled) {
+                themeChange.darkTheme = isDarkModeEnabled;
+              },
+            ),
+          ),
+        ],
       ),
       body: MainPage(),
     );

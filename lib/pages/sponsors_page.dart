@@ -1,4 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gdg_flutter_app/bloc/partner_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SponsorsPage extends StatefulWidget {
   const SponsorsPage({
@@ -9,8 +15,17 @@ class SponsorsPage extends StatefulWidget {
 }
 
 class _SponsorsPageState extends State<SponsorsPage> {
+  // ignore: missing_return
   Future<bool> back() async {
     Navigator.of(context).pop('some valsue');
+  }
+
+  _launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -20,20 +35,78 @@ class _SponsorsPageState extends State<SponsorsPage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
+          elevation: 0,
           title: Hero(
               tag: 'Sponsors',
               child: Material(
                   color: Colors.transparent,
                   child: Text('Sponsors',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600)))),
+                      style: Theme.of(context).textTheme.headline1))),
         ),
-        body: Container(
-          color: Colors.transparent,
-        ),
+        body: Consumer<PartnerBloc>(
+            builder: (context, data, child) {
+              return Column(children: [
+                Expanded(
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: data.partner.length,
+                      itemBuilder: (context, i) {
+                        return Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(data.partner[i].title,
+                                  style: Theme.of(context).textTheme.headline1),
+                            ),
+                            ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: data.partner[i].logos.length,
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      _launchURL(
+                                          data.partner[i].logos[index].url);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Card(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(18.0),
+                                              child: SvgPicture.network(
+                                                data.partner[i].logos[index]
+                                                    .logoUrl,
+                                                height: 80,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  data.partner[i].logos[index]
+                                                      .name,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline1),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }),
+                          ],
+                        );
+                      }),
+                ),
+              ]);
+            },
+            child: CupertinoActivityIndicator()),
       ),
     );
   }

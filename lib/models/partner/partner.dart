@@ -6,10 +6,9 @@ part 'partner.g.dart';
 @JsonSerializable()
 class Partner {
   final List<PartnerInfo> logos;
-  final String order;
   final String title;
 
-  Partner({this.logos, this.order, this.title});
+  Partner({this.logos, this.title});
 
   factory Partner.fromJson(Map<String, dynamic> json) =>
       _$PartnerFromJson(json);

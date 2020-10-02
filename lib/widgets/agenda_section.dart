@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gdg_flutter_app/models/agenda/agenda.dart';
-import 'package:gdg_flutter_app/models/session/session.dart';
 import 'package:gdg_flutter_app/utils/constants.dart';
 
 class AgendaSection extends StatelessWidget {
@@ -46,10 +45,7 @@ class AgendaSection extends StatelessWidget {
                 data[index].agenda.title ?? '',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
-                style: TextStyle(
-                    color: Colors.black87,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500),
+                style: Theme.of(context).textTheme.headline1,
               ),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,10 +71,7 @@ class AgendaSection extends StatelessWidget {
                 children: [
                   Text(
                     data[index].duration?.inMinutes?.toString() + ' Mins' ?? '',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                   Text(data[index].startTime ?? ''),
                 ],

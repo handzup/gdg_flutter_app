@@ -26,7 +26,7 @@ class AnimatedCard extends StatelessWidget {
         height: height,
         width: width,
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
@@ -47,10 +47,7 @@ class AnimatedCard extends StatelessWidget {
                   Spacer(),
                   Text(
                     title,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                   Spacer(),
                 ],
@@ -72,10 +69,7 @@ class AnimatedCard extends StatelessWidget {
                       color: Colors.transparent,
                       child: Text(
                         title,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600),
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ),
                   ),

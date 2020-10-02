@@ -95,7 +95,7 @@ class _AgendaPageState extends State<AgendaPage> {
                         onPressed: () => back(),
                         icon: Icon(
                           Icons.arrow_back,
-                          color: Colors.black87,
+                          color: Theme.of(context).buttonColor,
                         )),
                     title: Container(
                       child: Hero(
@@ -103,11 +103,8 @@ class _AgendaPageState extends State<AgendaPage> {
                           child: Material(
                               color: Colors.transparent,
                               child: Text('Agenda',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600)))),
+                                  style:
+                                      Theme.of(context).textTheme.headline1))),
                     ),
                   )
                 ];

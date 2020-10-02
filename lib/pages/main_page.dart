@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:gdg_flutter_app/bloc/partner_bloc.dart';
 import 'package:gdg_flutter_app/bloc/schedule_bloc.dart';
 import 'package:gdg_flutter_app/bloc/sessions_bloc.dart';
 import 'package:gdg_flutter_app/bloc/speakers_bloc.dart';
 import 'package:gdg_flutter_app/bloc/team_bloc.dart';
 import 'package:gdg_flutter_app/pages/agenda_page.dart';
-import 'package:gdg_flutter_app/pages/faq.page.dart';
+import 'package:gdg_flutter_app/pages/faq_page.dart';
 import 'package:gdg_flutter_app/pages/location_page.dart';
 import 'package:gdg_flutter_app/pages/speakers_page.dart';
 import 'package:gdg_flutter_app/pages/sponsors_page.dart';
@@ -64,7 +65,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   endPositon() {
-    print('end position');
     Future.delayed(Duration(milliseconds: 300)).then((value) {
       setState(() {
         show = !show;
@@ -89,6 +89,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     await Provider.of<ScheduleBloc>(context, listen: false).getSchedules();
     await Provider.of<SpeakerBloc>(context, listen: false).getSpeakers();
     await Provider.of<TeamBloc>(context, listen: false).getTeams();
+    await Provider.of<PartnerBloc>(context, listen: false).getPartners();
   }
 
   Alignment generate(String title) {

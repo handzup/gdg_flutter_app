@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gdg_flutter_app/bloc/partner_bloc.dart';
+import 'package:gdg_flutter_app/bloc/theme_bloc.dart';
+import 'package:gdg_flutter_app/styles.dart';
+import 'package:gdg_flutter_app/utils/themeprefs.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +32,25 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeProvider themeChangeProvider = ThemeProvider();
+
+  @override
+  void initState() {
+    getCurrentAppTheme();
+    super.initState();
+  }
+
+  void getCurrentAppTheme() async {
+    themeChangeProvider.darkTheme =
+        await themeChangeProvider.themePrefs.getTheme();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -45,15 +67,25 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<TeamBloc>(
           create: (context) => TeamBloc(),
         ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primaryColor: Colors.grey[50],
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ChangeNotifierProvider<PartnerBloc>(
+          create: (context) => PartnerBloc(),
         ),
-        home: SplashScreen(),
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (context) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (context) => themeChangeProvider,
+        ),
+      ],
+      child: Consumer<ThemeProvider>(
+        builder: (context, value, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: Styles.themeData(themeChangeProvider.darkTheme, context),
+            home: SplashScreen(),
+          );
+        },
       ),
     );
   }

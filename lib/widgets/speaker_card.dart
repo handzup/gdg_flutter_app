@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:gdg_flutter_app/models/speaker/badge.dart';
 import 'package:gdg_flutter_app/models/speaker/social.dart';
 import 'package:gdg_flutter_app/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -93,7 +92,8 @@ class SpeakerCard extends StatelessWidget {
                     width: 100,
                     fit: BoxFit.cover,
                     fadeInCurve: Curves.ease,
-                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    errorWidget: (context, url, error) =>
+                        Icon(Icons.broken_image),
                     imageUrl: imageUrl ?? 'https://picsum.photos/200/300',
                   ),
                 ),
@@ -109,11 +109,7 @@ class SpeakerCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(speakerName ?? '',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600)),
+                      style: Theme.of(context).textTheme.headline1),
                   Divider(
                     color: color,
                     thickness: 5,
@@ -123,22 +119,14 @@ class SpeakerCard extends StatelessWidget {
                     height: 10,
                   ),
                   Text(title ?? '',
-                      style: TextStyle(
-                          color: Colors.black26,
-                          fontSize: 14,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600)),
+                      style: Theme.of(context).textTheme.headline1),
                   SizedBox(
                     height: 10,
                   ),
                   Text(shortBio ?? '',
                       maxLines: 1,
                       overflow: TextOverflow.clip,
-                      style: TextStyle(
-                          color: Colors.black26,
-                          fontSize: 12,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600)),
+                      style: Theme.of(context).textTheme.headline2),
                   SizedBox(
                     height: 10,
                   ),

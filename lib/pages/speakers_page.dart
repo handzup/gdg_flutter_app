@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gdg_flutter_app/bloc/speakers_bloc.dart';
-import 'package:gdg_flutter_app/utils/constants.dart';
 import 'package:gdg_flutter_app/widgets/speaker_card.dart';
 import 'package:provider/provider.dart';
 
@@ -14,12 +13,11 @@ class SpeakersPage extends StatefulWidget {
 }
 
 class _SpeakersPageState extends State<SpeakersPage> {
+  // ignore: missing_return
   Future<bool> back() async {
     Navigator.of(context).pop('some valsue');
   }
 
-  TabController _tabController;
-  ScrollController _scrollController;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -33,11 +31,7 @@ class _SpeakersPageState extends State<SpeakersPage> {
               child: Material(
                   color: Colors.transparent,
                   child: Text('Speakers',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600)))),
+                      style: Theme.of(context).textTheme.headline1))),
         ),
         body: Column(children: [
           Expanded(

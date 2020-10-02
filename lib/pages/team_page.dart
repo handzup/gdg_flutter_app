@@ -82,7 +82,7 @@ class _TeamPageState extends State<TeamPage> {
                         onPressed: () => back(),
                         icon: Icon(
                           Icons.arrow_back,
-                          color: Colors.black87,
+                          color: Theme.of(context).buttonColor,
                         )),
                     title: Container(
                       child: Hero(
@@ -90,11 +90,8 @@ class _TeamPageState extends State<TeamPage> {
                           child: Material(
                               color: Colors.transparent,
                               child: Text('Team',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600)))),
+                                  style:
+                                      Theme.of(context).textTheme.headline1))),
                     ),
                   )
                 ];

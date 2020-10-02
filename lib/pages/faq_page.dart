@@ -9,6 +9,7 @@ class FaqPage extends StatefulWidget {
 }
 
 class _FaqPageState extends State<FaqPage> {
+  // ignore: missing_return
   Future<bool> back() async {
     Navigator.of(context).pop('some valsue');
   }
@@ -20,19 +21,21 @@ class _FaqPageState extends State<FaqPage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
+          elevation: 0,
           title: Hero(
               tag: 'Faq',
               child: Material(
                   color: Colors.transparent,
                   child: Text('Faq',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600)))),
+                      style: Theme.of(context).textTheme.headline1))),
         ),
-        body: Container(
-          color: Colors.transparent,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Comming Soon', style: Theme.of(context).textTheme.headline1)
+            ],
+          ),
         ),
       ),
     );

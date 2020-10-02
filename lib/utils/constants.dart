@@ -19,9 +19,9 @@ abstract class CardAligns {
   static const Alignment agendaStartPosition = Alignment(-3.0, -.1);
   static const Alignment agendaEndPosition = Alignment(-0.8, -0.1);
   static const Alignment teamStartPosition = Alignment(-3.0, 0.5);
-  static const Alignment teamEndPosition = Alignment(-0.8, 0.5);
-  static const Alignment faqStartPosition = Alignment(-3.0, .84);
-  static const Alignment faqEndPosition = Alignment(-0.8, 0.84);
+  static const Alignment teamEndPosition = Alignment(-0.8, 0.49);
+  static const Alignment faqStartPosition = Alignment(-3.0, .82);
+  static const Alignment faqEndPosition = Alignment(-0.8, 0.82);
   static const Alignment speakersStartPosition = Alignment(3.0, -.21);
   static const Alignment speakersEndPosition = Alignment(0.8, -0.21);
   static const Alignment sponsorsStartPosition = Alignment(3.0, 0.21);

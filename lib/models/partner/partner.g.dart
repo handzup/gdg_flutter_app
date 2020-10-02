@@ -12,13 +12,11 @@ Partner _$PartnerFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : PartnerInfo.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    order: json['order'] as String,
     title: json['title'] as String,
   );
 }
 
 Map<String, dynamic> _$PartnerToJson(Partner instance) => <String, dynamic>{
       'logos': instance.logos,
-      'order': instance.order,
       'title': instance.title,
     };
