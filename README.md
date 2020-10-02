@@ -8,7 +8,7 @@
 | :----------------------------------: | :----------------------------------: |
 | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/1.png) | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/1-dark.png) |
 | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/agenda.png) | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/agenda-dark.png) |
-| ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/skeakers.png) | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/skeakers-dark.png) |
+| ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/skeakers.png) | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/speakers-dark.png) |
 | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/team.png) | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/team-dark.png) |
 | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/sponsors.png) | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/sponsors-dark.png) |
 | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/splashScreen.png) | ![](https://raw.githubusercontent.com/handzup/gdg_flutter_app/master/images/screenshots/splashScreen-dark.png) |
