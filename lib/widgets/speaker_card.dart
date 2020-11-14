@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:gdg_flutter_app/models/speaker/social.dart';
@@ -92,6 +93,7 @@ class SpeakerCard extends StatelessWidget {
                     width: 100,
                     fit: BoxFit.cover,
                     fadeInCurve: Curves.ease,
+                    placeholder: (context, url) => CupertinoActivityIndicator(),
                     errorWidget: (context, url, error) =>
                         Icon(Icons.broken_image),
                     imageUrl: imageUrl ?? 'https://picsum.photos/200/300',

@@ -26,7 +26,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   bool show = true;
-  final double cardHegiht = 5;
+  final double cardHegiht = 5.5;
   final double cardWidth = 2.5;
   Alignment agenda = CardAligns.agendaStartPosition;
   Alignment team = CardAligns.teamStartPosition;
@@ -183,7 +183,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 width: mq.width / cardWidth,
                 icon: Feather.clock,
                 title: 'Agenda',
-                color: Colors.green,
+                color: GoogleColors.red,
               ),
             ),
             AnimatedContainer(
@@ -196,7 +196,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   width: mq.width / cardWidth,
                   icon: Feather.users,
                   title: 'Team',
-                  color: Colors.yellow[700],
+                  color: GoogleColors.yellow,
                 )),
             AnimatedContainer(
                 curve: Curves.linearToEaseOut,

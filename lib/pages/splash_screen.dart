@@ -1,6 +1,10 @@
+import 'dart:async';
+
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:gdg_flutter_app/bloc/sessions_bloc.dart';
 import 'package:gdg_flutter_app/pages/bubles.dart';
+import 'package:gdg_flutter_app/pages/nointernet_page.dart';
 import 'package:gdg_flutter_app/utils/next_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -14,8 +18,18 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    loadData();
+    checkConnectivity();
     super.initState();
+  }
+
+  checkConnectivity() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+
+    if (connectivityResult == ConnectivityResult.none) {
+      nextScreenReplace(context, NoInternet());
+    } else {
+      loadData();
+    }
   }
 
   loadData() async {
@@ -28,9 +42,15 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+        alignment: Alignment.center,
         children: [
           Bubbles(),
           Column(

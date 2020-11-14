@@ -1,6 +1,7 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:gdg_flutter_app/bloc/theme_bloc.dart';
+import 'package:gdg_flutter_app/utils/constants.dart';
 import 'package:provider/provider.dart';
 
 import '../styles.dart';
@@ -31,7 +32,8 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
-            child: DayNightSwitcher(
+            child: DayNightSwitcher(dayBackgroundColor: GoogleColors.blue,
+            sunColor: GoogleColors.yellow,
               isDarkModeEnabled: themeChange.darkTheme,
               onStateChanged: (isDarkModeEnabled) {
                 themeChange.darkTheme = isDarkModeEnabled;

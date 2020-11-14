@@ -51,7 +51,7 @@ class _LocationPageState extends State<LocationPage> {
     Marker(
         position: LatLng(41.342622, 69.337824),
         markerId: MarkerId('ItPark'),
-        infoWindow: InfoWindow(title: 'It Park', snippet: 'GDG DevFest'))
+        infoWindow: InfoWindow(title: 'It Park', snippet: 'GDG DevFest',))
   ];
   final cameraPosition = CameraPosition(
     target: LatLng(41.342622, 69.337824),

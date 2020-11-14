@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:gdg_flutter_app/models/session/session.dart';
@@ -102,7 +103,7 @@ class Carousel extends StatelessWidget {
                           Row(),
                           Container(
                             alignment: Alignment.topRight,
-                            width: 150,
+                            width: 130,
                             height: 50,
                             child: ListView.builder(
                                 reverse: true,
@@ -130,7 +131,7 @@ class Carousel extends StatelessWidget {
                                         ),
                                       ),
                                       placeholder: (context, url) =>
-                                          CircularProgressIndicator(),
+                                          CupertinoActivityIndicator(),
                                       errorWidget: (context, url, error) =>
                                           Icon(Icons.error),
                                     ),

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gdg_flutter_app/models/agenda/agenda.dart';
 import 'package:gdg_flutter_app/utils/constants.dart';
@@ -34,7 +35,7 @@ class AgendaSection extends StatelessWidget {
                             ),
                           ),
                           placeholder: (context, url) =>
-                              CircularProgressIndicator(),
+                              CupertinoActivityIndicator(),
                           errorWidget: (context, url, error) =>
                               Icon(Icons.error),
                         ),
