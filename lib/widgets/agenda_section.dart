@@ -71,6 +71,7 @@ class AgendaSection extends StatelessWidget {
               trailing: Column(
                 children: [
                   Text(
+                    // ignore: null_aware_before_operator
                     data[index].duration?.inMinutes?.toString() + ' Mins' ?? '',
                     style: Theme.of(context).textTheme.headline1,
                   ),

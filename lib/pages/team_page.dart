@@ -100,6 +100,7 @@ class _TeamPageState extends State<TeamPage> {
                 children: <Widget>[
                   Consumer<TeamBloc>(
                     builder: (context, data, child) {
+                      // ignore: null_aware_in_condition
                       if (data.team[0]?.members?.isEmpty) return child;
                       return ListView.builder(
                           itemCount: data.team[0].members.length,

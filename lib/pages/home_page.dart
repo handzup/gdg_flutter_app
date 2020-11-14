@@ -4,7 +4,6 @@ import 'package:gdg_flutter_app/bloc/theme_bloc.dart';
 import 'package:gdg_flutter_app/utils/constants.dart';
 import 'package:provider/provider.dart';
 
-import '../styles.dart';
 import 'main_page.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -32,8 +31,9 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
-            child: DayNightSwitcher(dayBackgroundColor: GoogleColors.blue,
-            sunColor: GoogleColors.yellow,
+            child: DayNightSwitcher(
+              dayBackgroundColor: GoogleColors.blue,
+              sunColor: GoogleColors.yellow,
               isDarkModeEnabled: themeChange.darkTheme,
               onStateChanged: (isDarkModeEnabled) {
                 themeChange.darkTheme = isDarkModeEnabled;

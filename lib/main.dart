@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:gdg_flutter_app/bloc/partner_bloc.dart';
 import 'package:gdg_flutter_app/bloc/theme_bloc.dart';
 import 'package:gdg_flutter_app/styles.dart';
-import 'package:gdg_flutter_app/utils/themeprefs.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
